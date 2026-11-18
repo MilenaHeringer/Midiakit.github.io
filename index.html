@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mídia Kit Odonto with Miih</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Pinyon+Script&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap">
+<style>
+/* Layout: uma coluna editorial estreita, como um prontuário elegante; fotos verticais do feed ancoram cada seção */
+:root{
+  /* paleta da Miih: vinho #730613 · vermelho #9B0519 · rosa #D17A7F · dourado #C69A5D · prata #8B8682 · cinza #D9D9D9 */
+  /* site inteiro em vinho (grená da odontologia), igual em modo claro e escuro */
+  --bg:#4b0612;          /* vinho da odontologia */
+  --surface:#5c0f1f;     /* vinho um tom acima, para cartões */
+  --ink:#fff7f2;
+  --muted:#ecc9cd;
+  --line:rgba(255,235,230,.2);
+  --gold:#ddb57c;        /* dourado (acento) */
+  --gold-soft:#6b1828;
+  --rose:#ddb57c;
+  --pink:#e9a1a8;        /* rosa */
+  --dourado:#ddb57c;
+  --cream:#f6e5d0;
+  --deep:#330309;        /* vinho mais escuro para faixas */
+  --deep-fg:#ffffff;
+  --deep-accent:#e8c48e;
+  --deep-line:rgba(232,196,142,.4);
+  --deep-tint:rgba(255,255,255,.07);
+  color-scheme:dark;
+  --f-display:"Bodoni Moda", "Didot", Georgia, serif;
+  --f-script:"Pinyon Script", "Brush Script MT", cursive;
+  --f-body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:960px;margin:0 auto;padding-block:32px 64px;display:flex;flex-direction:column;gap:88px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.08}
+h2{font-size:clamp(2rem,5vw,2.9rem)}
+h3{font-size:1.3rem}
+p{margin:0}
+.eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.script{font-family:var(--f-script);color:var(--dourado);font-weight:400}
+.sec-head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.sec-head p.lead{color:var(--muted);max-width:60ch}
+.num{font-variant-numeric:tabular-nums}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:200px 200px 6px 6px;display:block}
+.hero-photo .tag{position:absolute;left:-14px;bottom:28px;background:var(--surface);border:1px solid var(--dourado);padding:10px 16px;border-radius:999px;font-size:.85rem;box-shadow:0 8px 24px rgba(92,18,41,.14)}
+.hero-text{display:flex;flex-direction:column;gap:20px;min-width:0}
+.hero-text h1{font-size:clamp(2.6rem,7vw,4.4rem)}
+.hero-text h1 .script{display:block;font-size:.7em;margin-top:6px}
+.handle{font-size:1.1rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.85rem;color:var(--muted);background:var(--surface)}
+.hero-kpis{display:flex;gap:32px;flex-wrap:wrap;padding-top:8px;border-top:1px solid var(--line)}
+.hero-kpis div{display:flex;flex-direction:column}
+.hero-kpis b{font-family:var(--f-display);font-size:2rem;font-weight:400}
+.hero-kpis span{font-size:.8rem;color:var(--muted)}
+
+/* SOBRE */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.about p{font-size:1.08rem;max-width:58ch}
+.about .text{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pillars{display:grid;gap:12px}
+.pillar{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.pillar .ic{width:44px;height:44px;border-radius:50%;background:var(--gold-soft);display:grid;place-items:center;color:var(--gold)}
+.pillar b{display:block}
+.pillar span{color:var(--muted);font-size:.92rem}
+
+/* NÚMEROS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.stat{background:var(--surface);padding:24px 20px;display:flex;flex-direction:column;gap:4px}
+.stat b{font-family:var(--f-display);font-size:2.4rem;font-weight:400;line-height:1}
+.stat span{font-size:.85rem;color:var(--muted)}
+.stat.big{grid-column:span 2;background:var(--deep);color:var(--deep-fg)}
+.stat.big b{font-size:3.6rem;color:var(--deep-accent)}
+.split{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.split-bar{display:flex;height:14px;border-radius:99px;overflow:hidden;gap:2px}
+.split i{display:block;height:100%}
+.split .s1{background:var(--gold)}
+.split .s2{background:var(--pink)}
+.split .s3{background:var(--cream)}
+.split-legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.88rem;color:var(--muted)}
+.split-legend span{display:flex;align-items:center;gap:6px}
+.split-legend i{width:12px;height:12px;border-radius:3px}
+.split-legend .tot{color:var(--ink);font-weight:600}
+.stat.big span{color:inherit;opacity:.8}
+.highlight{margin-top:20px;padding:18px 22px;border-left:3px solid var(--dourado);background:var(--gold-soft);border-radius:0 12px 12px 0}
+.highlight b{color:var(--ink)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.panel h3{font-size:1.15rem}
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:70px 1fr 48px;gap:12px;align-items:center;font-size:.9rem}
+.bar .track{height:10px;background:var(--gold-soft);border-radius:99px;overflow:hidden}
+.bar .fill{height:100%;background:var(--gold);border-radius:99px}
+.bar .v{text-align:right;color:var(--muted)}
+.gender{display:flex;height:44px;border-radius:12px;overflow:hidden;font-size:.9rem;font-weight:600}
+.gender div{display:flex;align-items:center;padding:0 14px}
+.gender .w{background:var(--gold);color:var(--surface)}
+.gender .m{background:var(--line);color:var(--ink);justify-content:flex-end;flex:1}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact{border-top:1px solid var(--line);padding-top:10px}
+.fact small{display:block;color:var(--muted);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.fact b{font-weight:500}
+
+/* TRAJETÓRIA */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.journey figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.journey img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;display:block}
+.journey figcaption{font-size:.88rem;color:var(--muted)}
+.journey figcaption b{display:block;color:var(--ink);font-weight:600}
+
+/* VÍDEOS */
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vid{display:flex;flex-direction:column;gap:8px}
+.vid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:var(--deep);display:block}
+.vid span{font-size:.88rem;color:var(--muted)}
+.vid span b{color:var(--ink);font-weight:600}
+.badge{display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--deep);font-weight:600;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:2px}
+
+/* PARCERIAS */
+.partners{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.partner{padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.partner h3{font-size:1.4rem}
+.partner small{color:var(--gold);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
+.partner p{color:var(--muted);font-size:.95rem}
+
+/* PROPOSTA */
+.offer{background:var(--deep);color:var(--deep-fg);border-radius:28px;padding:48px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:32px}
+.offer h2{color:var(--deep-fg)}
+.offer .eyebrow{color:var(--deep-accent)}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.offer-card{border:1px solid var(--deep-line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.offer-card .who{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--deep-accent);font-weight:600}
+.offer-card h3{font-size:1.6rem;color:var(--deep-fg)}
+.offer-card p{opacity:.85}
+.offer .note{font-size:1.05rem;max-width:62ch;opacity:.9}
+.offer .note b{color:var(--deep-accent);font-weight:600}
+.formats{display:flex;flex-wrap:wrap;gap:8px}
+.formats span{border:1px solid var(--deep-line);border-radius:99px;padding:6px 14px;font-size:.88rem}
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.channel{background:var(--deep-tint);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.channel b{color:var(--deep-accent);font-family:var(--f-display);font-size:1.3rem;font-weight:400}
+.channel span{font-size:.88rem;opacity:.85}
+
+/* CONTATO */
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center}
+.contact img{width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 25%;border-radius:50%;display:block;max-width:320px}
+.contact-list{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;flex-wrap:wrap}
+.row div{min-width:0}
+.row small{display:block;color:var(--muted);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.row b{font-weight:500;word-break:break-all;user-select:all}
+.row a{color:var(--ink)}
+button.copy{font:inherit;font-size:.85rem;border:1px solid var(--gold);color:var(--ink);background:transparent;border-radius:99px;padding:6px 14px;cursor:pointer}
+button.copy:hover{background:var(--gold-soft)}
+button.copy:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+footer{text-align:center;color:var(--muted);font-size:.85rem}
+footer .script{font-size:2rem;display:block}
+
+@media (max-width:780px){
+  .hero,.about,.two,.contact,.offer-grid{grid-template-columns:1fr}
+  .hero{gap:28px}
+  .hero-photo .tag{left:8px}
+  .stats{grid-template-columns:1fr 1fr}
+  .journey{grid-template-columns:1fr 1fr}
+  .videos{grid-template-columns:1fr 1fr}
+  .partners{grid-template-columns:1fr}
+  .channels{grid-template-columns:1fr}
+  .contact img{max-width:200px;margin:0 auto}
+  .wrap{gap:64px}
+}
+@media (max-width:420px){.stat.big b{font-size:2.8rem}.stat b{font-size:2rem}}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Mídia kit · 2026</span>
+      <h1>Milena Heringer Leal <span class="script">Odonto with Miih</span></h1>
+      <p>Estudante de Odontologia que compartilha a rotina real da faculdade: aulas, vlogs, dicas de estudo e o caminho até a aprovação.</p>
+      <a class="handle" href="https://www.instagram.com/odonto_withmiih/" target="_blank" rel="noopener">@odonto_withmiih</a>
+      <div class="chips">
+        <span class="chip">Odontologia · 2º período</span>
+        <span class="chip">Universidade de Itaúna</span>
+        <span class="chip">CRO Jovem Divinópolis</span>
+        <span class="chip">Divinópolis, MG</span>
+      </div>
+      <div class="hero-kpis">
+        <div><b class="num">80 mil</b><span>visualizações em 30 dias</span></div>
+        <div><b class="num">1.444</b><span>seguidores</span></div>
+        <div><b>76%</b><span>público feminino</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="img/2.jpg" alt="Milena sorrindo com camiseta escrita Odontologia e os braços escritos UFMG e Odonto">
+      <span class="tag">🦷 futura dentista</span>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Anamnese · quem sou eu</span>
+      <h2>Prazer, sou a Miih</h2>
+    </div>
+    <div class="about">
+      <div class="text">
+        <p>Fui aprovada pelo SISU na UFMG e na UNIFAL e pelo Prouni com bolsa de 100% na Universidade de Itaúna, onde curso hoje o 2º período.</p>
+        <p>No perfil, mostro para outros estudantes e vestibulandos como é a vida dentro do curso, sem filtro: o que estudar, como se organizar, os materiais que uso e os bastidores das clínicas e congressos.</p>
+        <p>Também faço parte da comissão do <b>CRO Jovem de Divinópolis</b>, o que me mantém perto da profissão e de outros estudantes da região.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="ic">▶</div><div><b>Vlogs da faculdade</b><span>Odontovlog com a Miih: aulas, laboratório, clínica e rotina.</span></div></div>
+        <div class="pillar"><div class="ic">✎</div><div><b>Dicas de estudo</b><span>Organização, métodos e materiais para quem estuda odonto.</span></div></div>
+        <div class="pillar"><div class="ic">★</div><div><b>Aprovação e vestibular</b><span>Minha trajetória pelo SISU e Prouni para inspirar quem está tentando.</span></div></div>
+        <div class="pillar"><div class="ic">✦</div><div><b>Ciência e eventos</b><span>Iniciação científica, congressos e o CRO Jovem.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Exame clínico · últimos 30 dias</span>
+      <h2>Meus números no Instagram</h2>
+    </div>
+    <div class="stats">
+      <div class="stat big"><b class="num">80 mil</b><span>visualizações no total</span></div>
+      <div class="stat"><b class="num">50 mil</b><span>visualizações em Reels</span></div>
+      <div class="stat"><b class="num">5 mil</b><span>visualizações em Stories</span></div>
+      <div class="stat"><b class="num">25 mil</b><span>visualizações em posts</span></div>
+      <div class="stat"><b class="num">1.444</b><span>seguidores</span></div>
+      <div class="stat"><b class="num">+50</b><span>novos seguidores no mês</span></div>
+      <div class="stat"><b class="num">800</b><span>visitas ao perfil</span></div>
+    </div>
+    <div class="split" aria-label="De onde vêm as 80 mil visualizações">
+      <div class="split-bar"><i style="width:62.5%" class="s1"></i><i style="width:6.25%" class="s2"></i><i style="width:31.25%" class="s3"></i></div>
+      <div class="split-legend"><span><i class="s1"></i>Reels 50 mil</span><span><i class="s2"></i>Stories 5 mil</span><span><i class="s3"></i>Posts 25 mil</span><span class="tot">= 80 mil</span></div>
+    </div>
+    <p class="highlight">Meu conteúdo alcança <b>cerca de 55 vezes</b> o número de seguidores que tenho: a maior parte das visualizações vem de pessoas novas, que chegam pelos Reels.</p>
+
+    <div class="two">
+      <div class="panel">
+        <h3>320 interações por tipo de conteúdo</h3>
+        <div class="bars">
+          <div class="bar"><span>Stories</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="v num">200</span></div>
+          <div class="bar"><span>Reels</span><div class="track"><div class="fill" style="width:50%"></div></div><span class="v num">100</span></div>
+          <div class="bar"><span>Posts</span><div class="track"><div class="fill" style="width:10%"></div></div><span class="v num">20</span></div>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem">Nos Stories a conversa com quem me segue é mais próxima: é onde as indicações têm mais resposta.</p>
+      </div>
+      <div class="panel">
+        <h3>Quem me acompanha</h3>
+        <div class="gender"><div class="w" style="width:76%">Mulheres 76%</div><div class="m">24%</div></div>
+        <div class="facts">
+          <div class="fact"><small>Idade</small><b>18–24 e 25–34 anos</b></div>
+          <div class="fact"><small>País</small><b>Brasil</b></div>
+          <div class="fact"><small>Idioma</small><b>Português</b></div>
+          <div class="fact"><small>Mais ativos</small><b>18h às 21h</b></div>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem">Principalmente estudantes de odontologia e vestibulandos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAJETÓRIA -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Histórico · conquistas</span>
+      <h2>Uma trajetória que inspira quem me segue</h2>
+      <p class="lead">Esses posts de aprovação estão entre os que mais geraram conversa no perfil.</p>
+    </div>
+    <div class="journey">
+      <figure><img src="img/5.jpg" alt="Post: aprovada em odontologia pelo SISU na UNIFAL e na UFMG" loading="lazy"><figcaption><b>Aprovada pelo SISU</b>Odontologia na UFMG e na UNIFAL</figcaption></figure>
+      <figure><img src="img/8.jpg" alt="Post: aprovada em odontologia pelo Prouni 100% na Universidade de Itaúna e na Newton Paiva" loading="lazy"><figcaption><b>Prouni 100%</b>Universidade de Itaúna e Newton Paiva BH</figcaption></figure>
+      <figure><img src="img/6.jpg" alt="Post: assistente administrativo, concurso público 2024 da Prefeitura de Divinópolis" loading="lazy"><figcaption><b>Concurso público 2024</b>Prefeitura de Divinópolis</figcaption></figure>
+      <figure><img src="img/7.jpg" alt="Post: técnica em informática pelo CEFET-MG" loading="lazy"><figcaption><b>Técnica em Informática</b>CEFET-MG</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Portfólio · Reels</span>
+      <h2>Meu conteúdo em vídeo</h2>
+      <p class="lead">Toque para assistir. Falo direto com a câmera, com legenda e linguagem de estudante para estudante.</p>
+    </div>
+    <div class="videos">
+      <div class="vid"><video src="video/v2.mp4" poster="video/p2.jpg" controls playsinline preload="none"></video><span><b>Black Odon</b><span class="badge">publi</span><br>Odon Concursos</span></div>
+      <div class="vid"><video src="video/v5.mp4" poster="video/p5.jpg" controls playsinline preload="none"></video><span><b>Odontovlog com a Miih</b><span class="badge">publi</span><br>Linea Branca</span></div>
+      <div class="vid"><video src="video/v3.mp4" poster="video/p3.jpg" controls playsinline preload="none"></video><span><b>Dica de estudo</b><span class="badge">publi</span><br>Odon Concursos</span></div>
+      <div class="vid"><video src="video/v4.mp4" poster="video/p4.jpg" controls playsinline preload="none"></video><span><b>Iniciação científica</b><span class="badge">publi</span></span></div>
+      <div class="vid"><video src="video/v6.mp4" poster="video/p6.jpg" controls playsinline preload="none"></video><span><b>Minha jornada na odonto</b><span class="badge">publi</span><br>Linea Branca</span></div>
+      <div class="vid"><video src="video/v1.mp4" poster="video/p1.jpg" controls playsinline preload="none"></video><span><b>Papo com os seguidores</b></span></div>
+    </div>
+  </section>
+
+  <!-- PARCERIAS -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Encaminhamentos · parcerias</span>
+      <h2>Marcas e instituições com quem já trabalhei</h2>
+    </div>
+    <div class="partners">
+      <div class="partner"><small>Educação</small><h3>Odon Concursos</h3><p>Plataforma de preparação para concursos e residência em odontologia.</p></div>
+      <div class="partner"><small>Moda profissional</small><h3>Linea Branca</h3><p>Marca de jalecos e scrubs. Parceria recente.</p></div>
+      <div class="partner"><small>Evento científico</small><h3>COMIC</h3><p>Congresso Multidisciplinar de Iniciação Científica.</p></div>
+      <div class="partner"><small>Conselho de classe</small><h3>CRO Jovem Divinópolis</h3><p>Membro da comissão.</p></div>
+    </div>
+  </section>
+
+  <!-- PROPOSTA -->
+  <section class="offer">
+    <div class="sec-head" style="margin:0">
+      <span class="eyebrow">Plano de tratamento · proposta</span>
+      <h2>Como podemos trabalhar juntos</h2>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card"><span class="who">Para mim</span><h3>Recebo os produtos</h3><p>Uso de verdade na minha rotina de faculdade, nas aulas, no laboratório e na clínica, e mostro isso no conteúdo.</p></div>
+      <div class="offer-card"><span class="who">Para meus seguidores</span><h3>Cupom de desconto</h3><p>Um cupom exclusivo para quem me acompanha comprar com desconto, e para a marca medir as vendas que vieram de mim.</p></div>
+    </div>
+    <p class="note">Em troca, divulgo a marca nas minhas redes. <b>A parceria que busco é em produtos, não em desconto para mim:</b> o desconto fica para os seguidores.</p>
+    <div>
+      <p style="margin-bottom:12px;opacity:.85">Formatos que posso fazer</p>
+      <div class="formats">
+        <span>Reels</span><span>Sequência de Stories</span><span>Post / carrossel</span><span>Vlog com o produto em uso</span><span>Unboxing</span><span>Link e cupom nos Stories</span>
+      </div>
+    </div>
+    <div class="channels">
+      <div class="channel"><b>Instagram</b><span>Reels, Stories e posts · @odonto_withmiih</span></div>
+      <div class="channel"><b>TikTok</b><span>Vídeos curtos e tendências</span></div>
+      <div class="channel"><b>YouTube</b><span>Vlogs mais longos e Shorts</span></div>
+    </div>
+    <p style="opacity:.85">Combinam bem com o meu público: jalecos e scrubs, instrumentais e materiais odontológicos, cursos e plataformas de estudo, papelaria, mochilas e itens de rotina universitária.</p>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact">
+    <img src="img/1.jpg" alt="Milena com os braços escritos UFMG Odonto" loading="lazy">
+    <div>
+      <div class="sec-head">
+        <span class="eyebrow">Contato</span>
+        <h2>Vamos conversar?</h2>
+      </div>
+      <div class="contact-list">
+        <div class="row"><div><small>E-mail</small><b id="email">milenaheringerestudos@gmail.com</b></div><button class="copy" data-copy="email">Copiar</button></div>
+        <div class="row"><div><small>WhatsApp</small><b id="zap">(37) 99821-4348</b></div><button class="copy" data-copy="zap">Copiar</button></div>
+        <div class="row"><div><small>Instagram</small><b><a href="https://www.instagram.com/odonto_withmiih/" target="_blank" rel="noopener">@odonto_withmiih</a></b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer><span class="script">obrigada!</span>Dados do Instagram Insights, últimos 30 dias · novembro de 2026</footer>
+</main>
+
+<script>
+document.querySelectorAll('button.copy').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var el=document.getElementById(btn.dataset.copy), t=el.textContent.trim();
+    function ok(){btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar'},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selecionado'}
+    try{navigator.clipboard.writeText(t).then(ok,fallback)}catch(e){fallback()}
+  });
+});
+document.querySelectorAll('video').forEach(function(v){
+  v.addEventListener('play',function(){document.querySelectorAll('video').forEach(function(o){if(o!==v)o.pause()})});
+});
+</script>
+</body>
+</html>
